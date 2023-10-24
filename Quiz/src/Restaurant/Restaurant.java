@@ -13,9 +13,9 @@ class Restaurant{
 	}
 
 	public void addRegularMenu(){
-		String code;
-		String name;
-		int price;
+		String code="";
+		String name="";
+		int price=0;
 		boolean notValidated = true;
 
 		System.out.println("Add Regular Menu");
@@ -30,7 +30,7 @@ class Restaurant{
 				System.out.println("Code length must be 4 character");
 			} else {
 				for(int i = 1; i<code.length();i++){
-					if(codetoCharArray()[i] < '0' || codetoCharArray()[i] > '9'){
+					if(code.toCharArray()[i] < '0' || code.toCharArray()[i] > '9'){
 						System.out.println("Code must start with R followed by numbers");
 				 	}				
 				}
@@ -71,10 +71,10 @@ class Restaurant{
 	}
 
 public void addSpecialMenu(){
-		String code;
-		String name;
-		int price;
-		int discount;
+		String code="";
+		String name="";
+		int price=0;
+		int discount=0;
 		boolean notValidated = true;
 		System.out.println("Add Special Menu");
 		System.out.println("========================");
@@ -140,7 +140,7 @@ public void addSpecialMenu(){
 	}
 
 	public void deleteRegularMenu(){
-		String code;
+		String code="";
 		boolean notValidated = true;
 		System.out.println("Delete Regular Menu");
 		System.out.println("========================");
@@ -171,7 +171,7 @@ public void addSpecialMenu(){
 	}
 
 	public void deleteSpecialMenu(){
-		String code;
+		String code="";
 		boolean notValidated = true;
 		System.out.println("Delete Special Menu");
 		System.out.println("========================");
@@ -183,7 +183,7 @@ public void addSpecialMenu(){
 			} else if(code.length() != 4){
 				System.out.println("Code length must be 4 character");
 			} else {
-				for(int i = 1; i<code.lenght();i++){
+				for(int i = 1; i<code.length();i++){
 					if(code.toCharArray()[i] < '0' || code.toCharArray()[i] > '9'){
 						System.out.println("Code must start with S followed by numbers");
 				 	} else {
@@ -202,7 +202,16 @@ public void addSpecialMenu(){
 	}
 
 	public void showAllMenu(){
-		System.out.println("");
+		System.out.println("Regular Menu");
+		for(Menu menu : this.regularMenu){
+			System.out.println("" + menu.code + " " + menu.name + " " + menu.price);
+		}
+		
+		System.out.println("Special Menu");
+		for(Menu menu : this.specialMenu){
+			System.out.println("" + menu.code + " " + menu.name + " " + menu.price + " " + menu.discount);
+		}		
+
 	}
 
 	public void printMenu(){
@@ -220,7 +229,7 @@ public void addSpecialMenu(){
 	public void menuApp(){
 	// mui importante
 		int option;
-		boolean isRunning;
+		boolean isRunning = true;
 		while(isRunning){
 			printMenu();
 			option = scan.nextInt();
@@ -244,7 +253,7 @@ public void addSpecialMenu(){
 
 	public static void main(String[] args) {
 		
-		Menu menu = new Menu();
-		menu.menuApp();
+		Restaurant restaurant = new Restaurant();
+		restaurant.menuApp();
 	}
 }
